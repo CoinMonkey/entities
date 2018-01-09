@@ -1,0 +1,29 @@
+{
+    "name": "CoinMonkey/entities",
+    "description": "Basic entities for exchanges",
+    "keywords": ["crypto", "currency", "entities", "coinmonkey"],
+    "homepage": "https://coinmonkey.io",
+    "type": "library",
+    "license": "Apache",
+    "support": {
+        "source": "https://github.com/pistol88"
+    },
+    "authors": [
+        {
+            "name": "Ilya Pistol",
+            "email": "admin@coinmonkey.io"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "autoload": {
+        "psr-4": {
+            "coinmonkey\\entities\\": ""
+        }
+    },
+}
