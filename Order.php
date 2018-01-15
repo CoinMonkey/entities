@@ -10,15 +10,15 @@ class Order implements SumInterface
     private $sum;
     private $currency;
     private $operations = [];
-	
-	const STATUS_FAIL = 0;
+    
+    const STATUS_FAIL = 0;
     const STATUS_WAIT_YOUR_TRANSACTION = 1;
     const STATUS_WAIT_PARTNER_TRANSACTION = 2;
     const STATUS_WAIT_MONKEY_TRANSACTION = 3;
     const STATUS_DONE = 4;
-	const STATUS_PARTNER_PROCESSING = 5;
-	const STATUS_YOU_DID_TRANSACTION = 6;
-	
+    const STATUS_PARTNER_PROCESSING = 5;
+    const STATUS_YOU_DID_TRANSACTION = 6;
+    
     public function __construct($sum, Currency $currency, $operations = [])
     {
         $this->sum = $sum;
