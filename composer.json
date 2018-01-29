@@ -1,5 +1,5 @@
 {
-    "name": "CoinMonkey/entities",
+    "name": "coinmonkey/exchange-entities",
     "description": "Basic entities for exchanges",
     "keywords": ["crypto", "currency", "entities", "coinmonkey"],
     "homepage": "https://coinmonkey.io",
