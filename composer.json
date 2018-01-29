@@ -4,7 +4,7 @@
     "keywords": ["crypto", "currency", "entities", "coinmonkey"],
     "homepage": "https://coinmonkey.io",
     "type": "library",
-    "license": "Apache",
+    "license": "Apache-2.0",
     "support": {
         "source": "https://github.com/pistol88"
     },
@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "coinmonkey\\entities\\": ""
+            "coinmonkey\\entities\\": "src\\"
         }
-    },
+    }
 }
