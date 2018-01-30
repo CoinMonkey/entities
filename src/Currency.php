@@ -2,7 +2,7 @@
 
 namespace coinmonkey\entities;
 
-class Currency
+class Coin
 {
     private $code;
     private $name;

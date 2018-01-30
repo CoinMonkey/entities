@@ -2,77 +2,74 @@
 
 namespace coinmonkey\entities;
 
-use coinmonkey\interfaces\SumInterface;
-use coinmonkey\entities\Currency;
+use coinmonkey\interfaces\AmountInterface;
+use coinmonkey\interfaces\OrderInterface;
+use coinmonkey\interfaces\AddressInterface;
+use coinmonkey\entities\Coin;
 
-class Order implements SumInterface
+class Order implements OrderInterface
 {
-    private $sum;
-    private $currency;
-    private $operations = [];
-    
+    private $amount;
+    private $status;
+    private $coin;
+    private $givenAmount;
+
     const STATUS_FAIL = 0;
-    const STATUS_WAIT_YOUR_TRANSACTION = 1;
-    const STATUS_WAIT_PARTNER_TRANSACTION = 2;
-    const STATUS_WAIT_MONKEY_TRANSACTION = 3;
-    const STATUS_DONE = 4;
-    const STATUS_PARTNER_PROCESSING = 5;
-    const STATUS_YOU_DID_TRANSACTION = 6;
-    
-    public function __construct($sum, Currency $currency, $operations = [])
+    const STATUS_WAIT_CLIENT_TRANSACTION = 1;
+    const STATUS_WAIT_EXCHANGER_PROCESSING = 2;
+    const STATUS_EXCHANGER_PROCESSING = 3;
+    const STATUS_WAIT_EXCHANGER_TRANSACTION = 4;
+    const STATUS_DONE = 5;
+
+    public function __construct(AmountInterface $givenAmount, Coin $coin, AddressInterface $address)
     {
-        $this->sum = $sum;
-        $this->currency = $currency;
-        $this->operations = $operations;
+        $this->givenAmount = $givenAmount;
+        $this->coin = $coin;
+        $this->address = $address;
     }
 
-    public function getCurrency(): Currency
+    public function getCoin(): Coin
     {
-        return $this->currency;
+        return $this->coin;
     }
 
-    public function getSum()
+    public function getAddress() : AddressInterface
     {
-        return $this->sum;
+        return $this->address;
     }
 
-    public function setSum($sum)
+    public function getStatus() : AmountInterface
     {
-        $this->sum = $sum;
+        return $this->status;
     }
 
-    public function setCurrency(Currency $currency)
+    public function getGivenAmount() : AmountInterface
     {
-        $this->currency = $currency;
+        return $this->givenAmount;
     }
 
-    public function getOperations(): array
+    public function getStatus()
     {
-        return $this->operations;
+        return $this->status;
     }
 
-    public function execute()
+    public function setStatus($status)
     {
-        $report = [];
+        $this->status = $status;
+    }
 
-        foreach($this->operations as $operation) {
-            $exchanger = $operation->getExchanger();
+    public function setAmount($amount)
+    {
+        $this->amount = $amount;
+    }
 
-            if($operation->getDeal() == 'buy') {
-                $report[] = [
-                    'result' => $exchanger->buy($operation->getMarket(), $operation->getSum(), $operation->getRate()),
-                    'operation' => $operation,
-                    'deal' => 'buy',
-                ];
-            } else {
-                $report[] = [
-                    'result' => $exchanger->sell($operation->getMarket(), $operation->getSum(), $operation->getRate()),
-                    'operation' => $operation,
-                    'deal' => 'sell',
-                ];
-            }
-        }
+    public function setCoin(Coin $coin)
+    {
+        $this->coin = $coin;
+    }
 
-        return $report;
+    public function setAddress(AddressInterface $address)
+    {
+        $this->address = $address;
     }
 }

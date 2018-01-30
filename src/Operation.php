@@ -9,16 +9,16 @@ class Operation implements OperationInterface
 {
     private $market;
     private $exchanger;
-    private $sum;
+    private $amount;
     private $rate;
     private $deal;
     private $status;
 
-    public function __construct(ExchangerInterface $exchanger, $market, $deal, $sum, $rate)
+    public function __construct(ExchangerInterface $exchanger, $market, $deal, $amount, $rate)
     {
         $this->market = $market;
         $this->exchanger = $exchanger;
-        $this->sum = $sum;
+        $this->amount = $amount;
         $this->deal = $deal;
         $this->rate = $rate;
     }
@@ -33,9 +33,9 @@ class Operation implements OperationInterface
         return $this->market;
     }
 
-    public function getSum() : float
+    public function getGivenAmount() : float
     {
-        return $this->sum;
+        return $this->amount;
     }
 
     public function getDeal() : string
