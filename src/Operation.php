@@ -33,7 +33,7 @@ class Operation implements OperationInterface
         return $this->market;
     }
 
-    public function getGivenAmount() : float
+    public function getAmount() : float
     {
         return $this->amount;
     }

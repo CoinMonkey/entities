@@ -5,7 +5,7 @@ namespace coinmonkey\entities;
 use coinmonkey\interfaces\AmountInterface;
 use coinmonkey\interfaces\OrderInterface;
 use coinmonkey\interfaces\AddressInterface;
-use coinmonkey\entities\Coin;
+use coinmonkey\interfaces\CoinInterface;
 
 class Order implements OrderInterface
 {
@@ -21,7 +21,7 @@ class Order implements OrderInterface
     const STATUS_WAIT_EXCHANGER_TRANSACTION = 4;
     const STATUS_DONE = 5;
 
-    public function __construct(AmountInterface $givenAmount, Coin $coin, AddressInterface $address)
+    public function __construct(AmountInterface $givenAmount, CoinInterface $coin, AddressInterface $address)
     {
         $this->givenAmount = $givenAmount;
         $this->coin = $coin;
@@ -43,7 +43,7 @@ class Order implements OrderInterface
         return $this->status;
     }
 
-    public function getGivenAmount() : AmountInterface
+    public function getAmount() : AmountInterface
     {
         return $this->givenAmount;
     }
@@ -63,7 +63,7 @@ class Order implements OrderInterface
         $this->amount = $amount;
     }
 
-    public function setCoin(Coin $coin)
+    public function setCoin(CoinInterface $coin)
     {
         $this->coin = $coin;
     }
