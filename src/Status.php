@@ -27,6 +27,6 @@ class Status implements StatusInterface
         return [
             1 => $this->tx1Id,
             2 => $this->tx2Id
-        ]
+        ];
     }
 }

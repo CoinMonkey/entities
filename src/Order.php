@@ -28,7 +28,7 @@ class Order implements OrderInterface
         $this->address = $address;
     }
 
-    public function getCoin(): Coin
+    public function getCoin(): CoinInterface
     {
         return $this->coin;
     }
@@ -36,11 +36,6 @@ class Order implements OrderInterface
     public function getAddress() : AddressInterface
     {
         return $this->address;
-    }
-
-    public function getStatus() : AmountInterface
-    {
-        return $this->status;
     }
 
     public function getAmount() : AmountInterface
