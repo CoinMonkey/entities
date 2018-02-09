@@ -6,6 +6,13 @@ use coinmonkey\interfaces\StatusInterface;
 
 class Status implements StatusInterface
 {
+    const STATUS_FAIL = 0;
+    const STATUS_WAIT_CLIENT_TRANSACTION = 1;
+    const STATUS_WAIT_EXCHANGER_PROCESSING = 2;
+    const STATUS_EXCHANGER_PROCESSING = 3;
+    const STATUS_WAIT_EXCHANGER_TRANSACTION = 4;
+    const STATUS_DONE = 5;
+
     private $status;
     private $tx1Id;
     private $tx2Id;
@@ -34,10 +41,10 @@ class Status implements StatusInterface
     {
         switch($this->status) {
             case Order::STATUS_FAIL: return 'fail';
-            case Order::STATUS_WAIT_CLIENT_TRANSACTION: return 'wailt client transaction';
-            case Order::STATUS_WAIT_EXCHANGER_PROCESSING: return 'wait exchanger processing';
+            case Order::STATUS_WAIT_CLIENT_TRANSACTION: return 'wailt a client transaction';
+            case Order::STATUS_WAIT_EXCHANGER_PROCESSING: return 'wait an exchanger processing';
             case Order::STATUS_EXCHANGER_PROCESSING: return 'exchanger processing';
-            case Order::STATUS_WAIT_EXCHANGER_TRANSACTION: return 'wait exchanger transaction';
+            case Order::STATUS_WAIT_EXCHANGER_TRANSACTION: return 'wait an exchanger transaction';
             case Order::STATUS_DONE: return 'done';
         }
 
