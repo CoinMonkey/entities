@@ -40,12 +40,12 @@ class Status implements StatusInterface
     public function getStatusName()
     {
         switch($this->status) {
-            case Order::STATUS_FAIL: return 'fail';
-            case Order::STATUS_WAIT_CLIENT_TRANSACTION: return 'wailt a client transaction';
-            case Order::STATUS_WAIT_EXCHANGER_PROCESSING: return 'wait an exchanger processing';
-            case Order::STATUS_EXCHANGER_PROCESSING: return 'exchanger processing';
-            case Order::STATUS_WAIT_EXCHANGER_TRANSACTION: return 'wait an exchanger transaction';
-            case Order::STATUS_DONE: return 'done';
+            case self::STATUS_FAIL: return 'fail';
+            case self::STATUS_WAIT_CLIENT_TRANSACTION: return 'wailt a client transaction';
+            case self::STATUS_WAIT_EXCHANGER_PROCESSING: return 'wait an exchanger processing';
+            case self::STATUS_EXCHANGER_PROCESSING: return 'exchanger processing';
+            case self::STATUS_WAIT_EXCHANGER_TRANSACTION: return 'wait an exchanger transaction';
+            case self::STATUS_DONE: return 'done';
         }
 
         return null;
